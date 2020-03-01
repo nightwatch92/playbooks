@@ -1,8 +1,8 @@
 ---
-#The following host works on very old version of nginx(1.6.2)
+#The following playbook is designed for very old version of nginx(1.6.2)
 - hosts: banana
   tasks:
-  - name: Generate Diffie-Hellman parameters with the default size (4096 bits)
+  - name: Generate Diffie-Hellman parameters with the default size (2048 bits)
     openssl_dhparam:
       path: /etc/ssl/dhparams.pem
       size: 2048
@@ -23,7 +23,6 @@
           server1:
             listen:
               listen_localhost:
-                # ip: 0.0.0.0
                 port: 80
             server_name: "{{ domain }} www.{{ domain }}"
             https_redirect: "$host"
