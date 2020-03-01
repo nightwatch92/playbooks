@@ -62,3 +62,17 @@
               x_xss_protection:
                 name: X-Xss-Protection
                 value: 1; mode=block always
+            web_server:
+              locations:
+                letsencrypt:
+                  location: /.well-known/acme-challenge
+                  html_file_location: /var/www/html
+                proxy_pass:
+                  location: /
+                  include_files: 
+                    - uwsgi_params
+                  custom_options:
+                    - "uwsgi_pass      unix:/var/tmp/akumsan.socket"
+              http_demo_conf: false
+
+
